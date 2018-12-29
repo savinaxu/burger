@@ -1,0 +1,15 @@
+ * {
+     font-family: 'Montserrat', sans-serif;
+ }
+
+ body {
+     background-color: coral;
+ }
+
+ .img-container {
+     margin: 10px auto;
+ }
+
+ .icon {
+     width: 300px;
+ }
