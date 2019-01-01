@@ -32,6 +32,15 @@ let orm = {
         connection.query(queryString, function(err, result) {
             if (err) throw err;
             cb(result)
-        })
+        });
     },
+    updateOne: function(table, objColVals, condition, cb) {
+        let queryString = "UPDATE" + table + " SET "
+        queryString += objToSql(objColVals) + " WHERE " + condition
+        connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            cb(result)
+        })
+    }
+
 }
