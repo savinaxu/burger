@@ -34,6 +34,17 @@ let orm = {
             cb(result)
         });
     },
+    insertOne: function(table, cols, vals, cb) {
+        let queryString = "INSERT INTO" + table + " (";
+        queryString += cols.toString();
+        queryString += ") VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") "
+        connection.query(queryString, vals, function(err,result) {
+            if (err) throw err;
+            cb(result)
+        });
+    },
     updateOne: function(table, objColVals, condition, cb) {
         let queryString = "UPDATE" + table + " SET "
         queryString += objToSql(objColVals) + " WHERE " + condition
@@ -42,5 +53,4 @@ let orm = {
             cb(result)
         })
     }
-
 }
