@@ -35,18 +35,20 @@ let orm = {
         });
     },
     insertOne: function(table, cols, vals, cb) {
-        let queryString = "INSERT INTO" + table + " (";
+        let queryString = "INSERT INTO " + table + " (";
         queryString += cols.toString();
         queryString += ") VALUES (";
         queryString += printQuestionMarks(vals.length);
         queryString += ") "
+        console.log(queryString)
+        console.log(vals)
         connection.query(queryString, vals, function(err,result) {
             if (err) throw err;
             cb(result)
         });
     },
     updateOne: function(table, objColVals, condition, cb) {
-        let queryString = "UPDATE" + table + " SET "
+        let queryString = "UPDATE " + table + " SET "
         queryString += objToSql(objColVals) + " WHERE " + condition
         connection.query(queryString, function(err, result) {
             if (err) throw err;

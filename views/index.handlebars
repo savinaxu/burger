@@ -5,3 +5,37 @@
 <div class="heading-container">
     <h1 class="heading">Eat-Dat-Burger</h1>
 </div>
+
+<div class="form">
+    <form class="burger-form">
+        <div class="form-group">
+            <input type="text" id ="burgers" name="burger_name">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <h6>Enter a BURGER you want to eat!</h6>
+</div>
+
+<div class="display">
+    <div class="uneaten">
+        {{#each burgers}}
+            {{#unless devoured}}
+                <p>
+                    {{this.id}}. {{this.burger_name}}
+                    <button class="change-devoured" data-id="{{id}}">Devour it!</button>
+                </p>
+            {{/unless}}  
+        {{/each}}
+    </div>
+
+    <div id="eaten">
+        {{#each burgers}}
+            {{#if devoured}} 
+                <p>
+                    {{this.id}}. {{this.burger_name}}
+                </p>
+            {{/if}}
+        {{/each}} 
+    </div>
+
+</div>
